@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<package schemaVersion="1.7.7" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.7/schema/PACK.xsd">
+  <vendor>ACME</vendor>
+  <name>ACMECM4_DFP</name>
+  <description>ACMECM4 Arm Cortex-M4 Device Family Pack</description>
+  <url>https://www.acme-website.com/pack/</url>
+  <repository type="git">https://github.com/Open-CMSIS-Pack/DFP-Pack-HandsOn.git</repository>
+  <supportContact>support@acme-corp.com</supportContact>
+  <!-- optional license file -->
+  <!-- 
+  <license>
+  </license>
+  -->
+  
+  <releases>
+    <release version="1.0.0" date="2023-04-21">
+      Initial Version
+    </release>
+  </releases>
+
+  <keywords>
+    <!-- keywords for indexing -->
+    <keyword>ACME</keyword>
+    <keyword>ACMECM4</keyword>
+  </keywords>
+
+  <!-- devices section (mandatory for Device Family Packs) -->
+  <devices>
+    <family Dfamily="ACMECM4 Series" Dvendor="Generic:5">
+      <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="FPU" Dmpu="MPU" Dendian="Little-endian"/>
+      <description>
+        The ACMECM4 device family contains an Arm Cortex-M4 processor, running up to 100 MHz with a versatile set of on-chip peripherals.
+      </description>
+   	  <compile    header="Device/Include/ACMECM4xxx.h"/>
+      <debug      svd="SVD/ACMECM4xxx.svd"/>
+      <book       name="Docs/ACMECM4XXX_Datasheet.pdf"      title="ACMECM4 Series Datasheet"/>
+      <book       name="Docs/ACMECM4XXX_Product_Brief.pdf"  title="ACMECM4 Product Brief"/>
+      <feature type="ExtInt"        n="16"/>
+      <feature type="Temp"          n="-40"     m="105"   name="Extended Temperature Range"/>
+      <feature type="VCC"           n="2.5"     m="3.6"/>
+      <feature type="RTC"           n="32768"/>
+      <feature type="WDT"           n="1"/>
+      <!-- ************************  Subfamily 'ACMECM4100'  **************************** -->
+      <subFamily DsubFamily="ACMECM4100">
+        <processor  Dclock="50000000"/>
+        <feature type="IOs"           n="26"/>
+        <feature type="I2C"           n="1"/>
+        <feature type="UART"          n="4"/>
+        <feature type="Timer"         n="6"       m="32"/>
+    		<feature type="QFP"           n="32"/>
+        <!-- *************************  Device 'ACMECM4110'  ***************************** -->
+        <device Dname="ACMECM4110">
+          <memory     id="IROM1"                      start="0x00000000"  size="0x4000"  startup="1"   default="1"/>
+          <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"  init   ="0"   default="1"/>
+    		  <algorithm  name="Flash/ACMECM4XXX_16.FLM"  start="0x00000000"  size="0x4000"  default="1"/>
+          <feature    type="PWM"           n="2" m="16"/>
+        </device>
+        <!-- *************************  Device 'ACMECM4120'  ***************************** -->
+        <device Dname="ACMECM4120">
+          <memory     id="IROM1"                      start="0x00000000"  size="0x8000"  startup="1"   default="1"/>
+          <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"  init   ="0"   default="1"/>
+    		  <algorithm  name="Flash/ACMECM4XXX_32.FLM"  start="0x00000000"  size="0x8000"  default="1"/>
+        </device>
+      </subFamily>
+      <!-- ************************  Subfamily 'ACMECM4200'  **************************** -->
+      <subFamily DsubFamily="ACMECM4200">
+        <processor  Dclock="100000000"/>
+        <!-- *************************  Device 'ACMECM4250'  ***************************** -->
+        <device Dname="ACMECM4250">
+          <memory     id="IROM1"                      start="0x00000000"  size="0x4000"  startup="1"   default="1"/>
+          <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"  init   ="0"   default="1"/>
+    		  <algorithm  name="Flash/ACMECM4XXX_16.FLM"  start="0x00000000"  size="0x4000"  default="1"/>
+        </device>
+        <!-- *************************  Device 'ACMECM4260'  ***************************** -->
+        <device Dname="ACMECM4260">
+          <memory     id="IROM1"                      start="0x00000000"  size="0x8000"  startup="1"   default="1"/>
+          <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"  init   ="0"   default="1"/>
+    		  <algorithm  name="Flash/ACMECM4XXX_32.FLM"  start="0x00000000"  size="0x8000"  default="1"/>
+        </device>
+      </subFamily>
+    </family>
+  </devices>
+
+  <!-- examples section (optional for all Software Packs)-->
+  <!--
+  <examples>
+  </examples>
+  -->
+  
+  <!-- conditions section (optional for all Software Packs)-->
+  <conditions>
+    <condition id="ACMECM4 CMSIS-CORE">
+      <!-- conditions selecting Devices -->
+      <description>ACME ACMECM4 Series devices and CMSIS-CORE</description>
+      <require Cclass="CMSIS" Cgroup="CORE"/>
+      <require Dvendor="Generic:5" Dname="ACMECM4*"/>
+    </condition>
+    <condition id="ACMECM4 CMSIS-Driver USART">
+      <description>ACME ACMECM4 Device and CMSIS-CORE</description>
+      <require condition="ACMECM4 CMSIS-CORE"/>
+    </condition>
+  </conditions>
+  
+  <!-- component section (optional for all Software Packs)-->
+  <components>
+    <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="ACMECM4 CMSIS-CORE">
+      <description>System Startup for ACME ACMECM4 Series</description>
+      <files>
+        <!--  include folder -->
+        <file category="include" name="Device/Include/"/>
+        <file category="source"  name="Device/Source/startup_ARMCM4.c" attr="config" version="1.0.0"/>
+        <file category="source"  name="Device/Source/system_ARMCM4.c"  attr="config" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="CMSIS Driver" Cgroup="USART" Csub="ACMECM4XXX" Cversion="1.0.0" Capiversion="2.4.0" condition="ACMECM4 CMSIS-Driver USART">
+      <description>Access to #include Driver_USART.h file and implementation for ACMECM4XXX</description>
+      <RTE_Components_h>  <!-- the following content goes into file 'RTE_Components.h' -->
+        #define RTE_Drivers_USART1                /* Driver USART1 */
+        #define RTE_Drivers_USART2                /* Driver USART2 */
+        #define RTE_Drivers_USART3                /* Driver USART3 */
+      </RTE_Components_h>
+      <files >
+        <file category="sourceC" name="CMSIS/Driver/USART/Source/Driver_USART.c" select="USART Driver"/>
+      </files>
+    </component>
+  </components>
+
+</package>
