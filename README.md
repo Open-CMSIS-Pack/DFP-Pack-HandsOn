@@ -64,7 +64,7 @@ This repository contains a DFP a fictional device family called ACMECM4 from the
 
 <table>
 	<tr>
-		<td colspan="4" style="font-weight: bold;">ACME ACMECM4XXX</td>
+		<td colspan="4"><strong>ACME ACMECM4XXX</strong></td>
 	</tr>
 	<tr>
 		<td colspan="4">The ACMECM4 device family contains an Arm Cortex-M4 processor, running up to 100 MHz with a versatile set of on-chip peripher=als.</td>
