@@ -64,10 +64,10 @@ This repository contains a DFP a fictional device family called ACMECM4 from the
 
 <table>
 	<tr>
-		<td style="text-align: center" colspan="4"><strong>ACME ACMECM4XXX</strong></td>
+		<td colspan="4"><center><strong>ACME ACMECM4XXX</strong></center></td>
 	</tr>
 	<tr>
-		<td style="text-align: center" colspan="4">The ACMECM4 device family contains an Arm Co=rtex-M4 processor, running up to 100 MHz with a versatile set of on-chip peripher=als.</td>
+		<td colspan="4">The ACMECM4 device family contains an Arm Cortex-M4 processor, running up to 100 MHz with a versatile set of on-chip peripher=als.</td>
 	</tr>
 	<tr>
 		<td colspan="2">Processor</td>
@@ -102,8 +102,8 @@ This repository contains a DFP a fictional device family called ACMECM4 from the
 		<td colspan="2">1</td>
 	</tr>
 	<tr>
-		<td style="text-align: center" colspan="2"><strong>ACMECM4100</strong></td>
-		<td style="text-align: center" colspan="2"><strong>ACMECM4200</strong></td>
+		<td colspan="2"><strong>ACMECM4100</strong></td>
+		<td colspan="2"><strong>ACMECM4200</strong></td>
 	</tr>
 	<tr>
 		<td colspan="2">The ACMECM4100 sub-family runs up to 50 MHz </td>
@@ -139,8 +139,8 @@ This repository contains a DFP a fictional device family called ACMECM4 from the
 		<td>48-pin LQFP</td>
 	</tr>
 	<tr>
-		<td style="text-align: center" colspan="2"><strong>Features ACMECM4110</strong></td>
-		<td style="text-align: center" colspan="2"><strong>Features ACMECM4250</strong></td>
+		<td colspan="2"><strong>Features ACMECM4110</strong></td>
+		<td colspan="2"><strong>Features ACMECM4250</strong></td>
 	</tr>
 	<tr>
 		<td>RAM</td>
@@ -160,8 +160,8 @@ This repository contains a DFP a fictional device family called ACMECM4 from the
 		<td colspan="2"></td>
 	</tr>
 	<tr>
-		<td style="text-align: center" colspan="2"><strong>Features ACMECM4120</strong></td>
-		<td style="text-align: center" colspan="2"><strong>Features ACMECM4260</strong></td>
+		<td colspan="2"><strong>Features ACMECM4120</strong></td>
+		<td colspan="2"><strong>Features ACMECM4260</strong></td>
 	</tr>
 	<tr>
 		<td>RAM</td>
