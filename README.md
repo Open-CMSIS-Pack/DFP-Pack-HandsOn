@@ -26,13 +26,13 @@ The CMSIS-Pack technology is available in multiple toolchains. Below is a brief 
 
 ### Benefits for a Device Vendor
 
-- **Connection to users:** as a device vendor you control distribution to multiple tools and web portals. For [Arm's pack index](https://www.keil.arm.com/packs/) new releases are scanned once per day, making the pack and the [devices](https://www.keil.arm.com/devices) defined inside it publicly available. Every device, device group, family or subfamily has a page automatically generated on keil.arm.com that displays all available information about the device(s). Device pages display compatible development boards (based on the mounted device specified for a board) and link back to the parent Pack.
+- **Connection to users:** as a device vendor you control distribution to multiple tools and web portals. For [Arm's pack index](https://www.keil.arm.com/packs/) new releases are scanned once per day, making the pack and the [devices](https://www.keil.arm.com/devices) defined inside it publicly available. Every device, device group, family or subfamily has a page automatically generated on keil.arm.com that displays all available information about the device(s). Device pages display compatible development boards (based on the mounted device specified for a board) and link back to the parent Pack:
+
+![Example of a device page generated from PDSC data](Images/example-device-page-keil-arm-com.png)
 
 - **One way to distribute:** for all relevant toolchains as CMSIS supports Arm Compiler, GCC, and IAR. Software scales to many devices when APIs are applied (as in this example CMSIS-Driver).
 
 - **Reduces support efforts:** as it is easier for users to integrate a device in projects. Product Lifecycle Management simplifies updates and notifies users about outdated configuration files and deprecation of products.
-
-![Example of a device page generated from PDSC data](Images/example-device-page-keil-arm-com.png)
 
 >To learn more review the session about [Generating CMSIS-Packs for Devices](https://linaro.atlassian.net/wiki/spaces/CMSIS/pages/tbd).
 
