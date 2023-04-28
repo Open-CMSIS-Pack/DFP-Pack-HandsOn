@@ -26,11 +26,13 @@ The CMSIS-Pack technology is available in multiple toolchains. Below is a brief 
 
 ### Benefits for a Device Vendor
 
-- **Connection to users:** as device vendor you control distribution to multiple tools and web portals. For the [Arm pack system](https://www.keil.arm.com/packs/) new releases are scanned once per day, making it available to the entire user base. Documentation links in the software pack let you connect with your users.
+- **Connection to users:** as a device vendor you control distribution to multiple tools and web portals. For [Arm's pack index](https://www.keil.arm.com/packs/) new releases are scanned once per day, making the pack and the [devices](https://www.keil.arm.com/devices) defined inside it publicly available. Every device, device group, family or subfamily has a page automatically generated on keil.arm.com that displays all available information about the device(s). Device pages display compatible development boards (based on the mounted device specified for a board) and link back to the parent Pack.
 
 - **One way to distribute:** for all relevant toolchains as CMSIS supports Arm Compiler, GCC, and IAR. Software scales to many devices when APIs are applied (as in this example CMSIS-Driver).
 
 - **Reduces support efforts:** as it is easier for users to integrate a device in projects. Product Lifecycle Management simplifies updates and notifies users about outdated configuration files and deprecation of products.
+
+![Example of a device page generated from PDSC data](Images/example-device-page-keil-arm-com.png)
 
 >To learn more review the session about [Generating CMSIS-Packs for Devices](https://linaro.atlassian.net/wiki/spaces/CMSIS/pages/tbd).
 
@@ -52,7 +54,8 @@ The following section explains how to create a pack.
   - Think about the partitioning of your device family: what do the devices have in common (reduces effort in creating the PRDC file).
   - Create [Flash programming algorithms](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/flashAlgorithm.html) for your devices.
 - **Organize and create the file list** that will be delivered as Pack
-- **Create the [PDSC file](ACME.ACMECM4_DFP.pdsc)** using your favorite editor (we recommend VS Code with XML extension).
+- **Create the [PDSC file](ACME.ACMECM4_DFP.pdsc)** using your favorite editor (we recommend VS Code with XML extension). 
+A complete list of availble fields used to describe devices is available in the [Open-CMSIS-Pack Spec](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_devices_pg.html).
 - **Validate the software pack** using the `packchk` tool.
 - **Create the software pack** using the `gen_pack` library.
 
@@ -67,7 +70,7 @@ This repository contains a DFP a fictional device family called ACMECM4 from the
 		<td colspan="4"><strong>ACME ACMECM4XXX</strong></td>
 	</tr>
 	<tr>
-		<td colspan="4">The ACMECM4 device family contains an Arm Cortex-M4 processor, running up to 100 MHz with a versatile set of on-chip peripher=als.</td>
+		<td colspan="4">The ACMECM4 device family contains an Arm Cortex-M4 processor, running up to 100 MHz with a versatile set of on-chip peripherals.</td>
 	</tr>
 	<tr>
 		<td colspan="2">Processor</td>
