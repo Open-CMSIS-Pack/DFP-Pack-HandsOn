@@ -1,42 +1,199 @@
 # Create a Device Family Pack - Hands-On Example
 
-This repository explains the steps to create a device family pack using the Open-CMSIS-Pack technology. 
+This repository explains the structure of a Device Family Pack (DFP) for Open-CMSIS-Pack based projects. It also describes the steps to create a DFP based on an example pack.
 
-The pack contains a device family from the imaginary "ACME Corp.". It contains basic device support:
+A [Board Support Pack (BSP)](https://github.com/Open-CMSIS-Pack/BSP-Pack-HandsOn) complements a DFP with board support. While it is possible to deliver both (DFP and BSP) as a single pack, it is common practice to separate it.
+
+**Content**
+- [Create a Device Family Pack - Hands-On Example](#create-a-device-family-pack---hands-on-example)
+  - [Benefits of Packs to deliver device and board support](#benefits-of-packs-to-deliver-device-and-board-support)
+  - [DFP Content](#dfp-content)
+  - [Example DFP](#example-dfp)
+  - [Pack Development](#pack-development)
+    - [Tool-Environment (Recommended)](#tool-environment-recommended)
+    - [Steps to Create a Device Family Pack](#steps-to-create-a-device-family-pack)
+    - [Local Pack Development](#local-pack-development)
+    - [Verify Pack in Tools](#verify-pack-in-tools)
+  - [Pack Creation on GitHub](#pack-creation-on-github)
+  - [Publish Pack](#publish-pack)
+  - [Issues and Questions](#issues-and-questions)
+
+
+## Benefits of Packs to deliver device and board support
+
+- **One way to distribute** device support into all relevant toolchains as CMSIS and the CMSIS-Toolbox supports Arm Compiler, GCC, and IAR.
+
+- **Connect to your users** since you as vendor [control distribution of the DSP and BSP](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/createPackPublish.html). During a beta phase it is possible to deliver the packs using standard file sharing.
+  - Once a pack is published, various delivery services may pick up the device. The pack service on [www.keil.arm.com](https://www.keil.arm.com/packs/) scans your pack repository once per day.
+  - Features that you specify in the packs are enable web search that helps users to identify devices and boards based on project requirements.
+  - Adding documentation and purchase links lets you connect with your customers.
+
+- **Reduces support efforts** as packs make it easier for users to integrate software in projects
+  - The Product Lifecycle Management capabilities of the pack-enabled tools make it easy to update software packs when required.
+
+- **Access to examples** that may be part of packs quick-start user projects.
+  - Adding one board layer can support many different standardized examples that are based on the Reference Example Framework.
+
+>To learn more review the session about [Generating CMSIS-Packs for Devices and Boards](https://linaro.atlassian.net/wiki/spaces/CMSIS/pages/28905996344/Open-CMSIS-Pack+Technical+Meeting+2023-05-02).
+
+## DFP Content
+
+- Defines the [properties of a device or a device family](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/cp_PackTutorial.html#cp_DeviceProperties).
+  - [Processor core definition](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_processor) (multi-core devices have multiple processor core definitions)
+  - Processor core configuration of specifies such as FPU, MPU, TrustZone.
+  - [Debug](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_debug) and [Trace](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_trace) configuration of the device along with specific sequences. The [Debug Setup Tutorial](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/dbg_setup_tutorial.html) contains further details.
+- [On-device memory](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_memory) areas with description and [Flash algorithms](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/cp_PackTutorial.html#cp_FlashProgrammingAlgorithm).
+- [SVD file](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/cp_PackTutorial.html#cp_SVD) that describes the peripherals of a device.
+- [Device startup code, system file, and device header](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/cp_PackTutorial.html#cp_System_Startup).
+
+**Optional pack content** that improves the overall usability:
+
+- Data sheet and user manual of the device either directly including as documentation files or via web links.
+- Device specific software drivers and in case that the device is supported by a configuration tool the related generator information.
+- Standardized [CMSIS-Driver](https://arm-software.github.io/CMSIS_5/Driver/html/index.html) that enable standard middleware and software examples.
+- [Device features](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_feature) that enable search capabilities at web portals.
+
+## Example DFP
+
+This repository contains a example DFP of a fictional device family called ACMECM4 from the imaginary device vendor ACME. The device family consists of four members that are separated into two sub-families. The specification of the MVCM3 family is as follows:
+
+<table>
+  <tr>
+    <td colspan="4"><strong>ACME ACMECM4XXX</strong></td>
+  </tr>
+  <tr>
+    <td colspan="4">The ACMECM4 device family is based on the Arm Cortex-M4 processor with a set of on-chip peripherals.</td>
+  </tr>
+  <tr>
+    <td colspan="2">Processor</td>
+    <td colspan="2">Arm Cortex-M4 (r0p1), little-endian</td>
+  </tr>
+  <tr>
+      <td colspan="2">MPU</td>
+    <td colspan="2">Yes</td>
+  </tr>
+  <tr>
+    <td colspan="2">FPU</td>
+    <td colspan="2">Yes</td>
+  </tr>
+  <tr>
+    <td colspan="2">External interrupts</td>
+    <td colspan="2">16</td>
+  </tr>
+  <tr>
+    <td colspan="2">Operating temperature range</td>
+    <td colspan="2">-40 degC ~ +105 degC</td>
+  </tr>
+  <tr>
+    <td colspan="2">Operating voltage</td>
+    <td colspan="2">+2.5 V ~ 3.6 V</td>
+  </tr>
+  <tr>
+    <td colspan="2">Real-time clock</td>
+    <td colspan="2">32.768 kHz</td>
+  </tr>
+  <tr>
+    <td colspan="2">Watchdog timer</td>
+    <td colspan="2">1</td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>ACMECM4100</strong></td>
+    <td colspan="2"><strong>ACMECM4200</strong></td>
+  </tr>
+  <tr>
+    <td colspan="2">The ACMECM4100 sub-family runs up to 50 MHz </td>
+    <td colspan="2">The ACMECM4100 sub-family runs up to 100 MHz=</td>
+  </tr>
+  <tr>
+    <td>I/Os</td>
+    <td>26</td>
+    <td>I/Os</td>
+    <td>38</td>
+  </tr>
+  <tr>
+    <td>USART</td>
+    <td>4</td>
+    <td>USART</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Timer/counter</td>
+    <td>6 x 32-bit</td>
+    <td>Timer/counter</td>
+    <td>8 x 32-bit</td>
+  </tr>
+  <tr>
+    <td colspan="2"></td>
+    <td>PWM</td>
+    <td>4 x 16-bit</td>
+  </tr>
+  <tr>
+    <td>Package</td>
+    <td>32-pin LQFP</td>
+    <td>Package</td>
+    <td>48-pin LQFP</td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Features ACMECM4110</strong></td>
+    <td colspan="2"><strong>Features ACMECM4250</strong></td>
+  </tr>
+  <tr>
+    <td>RAM</td>
+    <td>2 kB SRAM</td>
+    <td>RAM</td>
+    <td>2 kB SRAM</td>
+  </tr>
+  <tr>
+    <td>Flash</td>
+    <td>16 kB</td>
+    <td>Flash</td>
+    <td>16 kB</td>
+  </tr>
+  <tr>
+    <td>PWM</td>
+    <td>2 x 16-bit</td>
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Features ACMECM4120</strong></td>
+    <td colspan="2"><strong>Features ACMECM4260</strong></td>
+  </tr>
+  <tr>
+    <td>RAM</td>
+    <td>4 kB SRAM</td>
+    <td>RAM</td>
+    <td>4 kB SRAM</td>
+  </tr>
+  <tr>
+    <td>Flash</td>
+    <td>32 kB</td>
+    <td>Flash</td>
+    <td>32 kB</td>
+  </tr>
+  <tr>
+    <td>PWM</td>
+    <td>4 x 16-bit</td>
+    <td colspan="2"></td>
+  </tr>
+</table>
+
+The DFP includes the following components that are described in the [PDSC file](ACME.ACMECM4_DFP.pdsc):
+
 - System, startup, and header files
 - SVD file
 - Flash programming algorithms
+- An template source file of a CMSIS-Driver USART.
 
-In addition, it contains a CMSIS-Driver USART implementation (empty).
+The pack is generated used the following scripts and workflows:
 
 Content                        | Description
 :------------------------------|----------------------------------------
 [`gen_pack.sh`](./gen_pack.sh) | Script that builds the pack; refer to [usage information](https://github.com/Open-CMSIS-Pack/gen-pack#get-started) for configuration details.
 [`.github/workflows/pack.yaml`](./.github/workflows/pack.yaml)  | GitHub workflow that generates the pack on every commit.
 
-## Benefits of Software Pack Delivery
-
-The CMSIS-Pack technology is available in multiple toolchains. Below is a brief history:
-
-- **2008:** CMSIS-Core has been introduced and [CMSIS](https://arm.com/cmsis) has been since then continuously extended.
-- **2012:** CMSIS-Pack has been started to simplify Product Lifecycle Management (PLM) of Keil MDK and improve overall user experience.
-- **2014:** CMSIS-Pack is part of Keil MDK for device support, middleware which resulted in higher adoption and lower support.
-- **2017:** Eclipse version of the CMSIS-Pack system is integrated in Arm DS and IAR toolchains. Sharing packs across toolchains is now possible.
-- **2020:** Discussions with ST and NXP resulted in the [Open-CMSIS-Pack](https://github.com/Open-CMSIS-Pack/) project and the [VS Code](https://marketplace.visualstudio.com/items?itemName=Arm.keil-studio-pack) integration.
-
-### Benefits for a Device Vendor
-
-- **Connection to users:** as device vendor you control distribution to multiple tools and web portals. For the [Arm pack system](https://www.keil.arm.com/packs/) new releases are scanned once per day, making it available to the entire user base. Documentation links in the software pack let you connect with your users.
-
-- **One way to distribute:** for all relevant toolchains as CMSIS supports Arm Compiler, GCC, and IAR. Software scales to many devices when APIs are applied (as in this example CMSIS-Driver).
-
-- **Reduces support efforts:** as it is easier for users to integrate a device in projects. Product Lifecycle Management simplifies updates and notifies users about outdated configuration files and deprecation of products.
-
->To learn more review the session about [Generating CMSIS-Packs for Devices](https://linaro.atlassian.net/wiki/spaces/CMSIS/pages/tbd).
-
 ## Pack Development
 
-The following section explains how to create a pack.
+This repository may be used to kick start the development of a pack. The following section explains how to create a pack.
 
 ### Tool-Environment (Recommended)
 
@@ -57,130 +214,6 @@ The following section explains how to create a pack.
 - **Create the software pack** using the `gen_pack` library.
 
 > A device family example is explained in this [meeting recording](https://linaro.atlassian.net/wiki/spaces/CMSIS/pages/tbd) starting at xx:xx.
-
-### Device Family Pack Example
-
-This repository contains a DFP a fictional device family called ACMECM4 from the device vendor ACME. The device family consists of four members that are separated into two sub-families. The specification of the MVCM3 family is as follows:
-
-<table>
-	<tr>
-		<td colspan="4"><strong>ACME ACMECM4XXX</strong></td>
-	</tr>
-	<tr>
-		<td colspan="4">The ACMECM4 device family contains an Arm Cortex-M4 processor, running up to 100 MHz with a versatile set of on-chip peripher=als.</td>
-	</tr>
-	<tr>
-		<td colspan="2">Processor</td>
-		<td colspan="2">Arm Cortex-M4 (r0p1), little-endian</td>
-	</tr>
-	<tr>
-		<td colspan="2">MPU</td>
-		<td colspan="2">Yes</td>
-	</tr>
-	<tr>
-		<td colspan="2">FPU</td>
-		<td colspan="2">Yes</td>
-	</tr>
-	<tr>
-		<td colspan="2">External interrupts</td>
-		<td colspan="2">16</td>
-	</tr>
-	<tr>
-		<td colspan="2">Operating temperature range</td>
-		<td colspan="2">-40 degC ~ +105 degC</td>
-	</tr>
-	<tr>
-		<td colspan="2">Operating voltage</td>
-		<td colspan="2">+2.5 V ~ 3.6 V</td>
-	</tr>
-	<tr>
-		<td colspan="2">Real-time clock</td>
-		<td colspan="2">32.768 kHz</td>
-	</tr>
-	<tr>
-		<td colspan="2">Watchdog timer</td>
-		<td colspan="2">1</td>
-	</tr>
-	<tr>
-		<td colspan="2"><strong>ACMECM4100</strong></td>
-		<td colspan="2"><strong>ACMECM4200</strong></td>
-	</tr>
-	<tr>
-		<td colspan="2">The ACMECM4100 sub-family runs up to 50 MHz </td>
-		<td colspan="2">The ACMECM4100 sub-family runs up to 100 MHz=</td>
-	</tr>
-	<tr>
-		<td>I/Os</td>
-		<td>26</td>
-		<td>I/Os</td>
-		<td>38</td>
-	</tr>
-	<tr>
-		<td>USART</td>
-		<td>4</td>
-		<td>USART</td>
-		<td>5</td>
-	</tr>
-	<tr>
-		<td>Timer/counter</td>
-		<td>6 x 32-bit</td>
-		<td>Timer/counter</td>
-		<td>8 x 32-bit</td>
-	</tr>
-	<tr>
-		<td colspan="2"></td>
-		<td>PWM</td>
-		<td>4 x 16-bit</td>
-	</tr>
-	<tr>
-		<td>Package</td>
-		<td>32-pin LQFP</td>
-		<td>Package</td>
-		<td>48-pin LQFP</td>
-	</tr>
-	<tr>
-		<td colspan="2"><strong>Features ACMECM4110</strong></td>
-		<td colspan="2"><strong>Features ACMECM4250</strong></td>
-	</tr>
-	<tr>
-		<td>RAM</td>
-		<td>2 kB SRAM</td>
-		<td>RAM</td>
-		<td>2 kB SRAM</td>
-	</tr>
-	<tr>
-		<td>Flash</td>
-		<td>16 kB</td>
-		<td>Flash</td>
-		<td>16 kB</td>
-	</tr>
-	<tr>
-		<td>PWM</td>
-		<td>2 x 16-bit</td>
-		<td colspan="2"></td>
-	</tr>
-	<tr>
-		<td colspan="2"><strong>Features ACMECM4120</strong></td>
-		<td colspan="2"><strong>Features ACMECM4260</strong></td>
-	</tr>
-	<tr>
-		<td>RAM</td>
-		<td>4 kB SRAM</td>
-		<td>RAM</td>
-		<td>4 kB SRAM</td>
-	</tr>
-	<tr>
-		<td>Flash</td>
-		<td>32 kB</td>
-		<td>Flash</td>
-		<td>32 kB</td>
-	</tr>
-	<tr>
-		<td>PWM</td>
-		<td>4 x 16-bit</td>
-		<td colspan="2"></td>
-	</tr>
-</table>
 
 ### Local Pack Development
 
@@ -246,17 +279,17 @@ cpackget add ./output/ACME.ACMECM4_DFP.1.0.0.pack
   </releases>
 ```
 
-### Pack Creation on GitHub
+## Pack Creation on GitHub
 
 Once changes are committed the [GitHub Action](https://github.com/Open-CMSIS-Pack/SW-Pack-HandsOn/actions) creates the pack.
 
-### Publish Pack
+## Publish Pack
 
 The pack can be hosted on the [\<url\>](https://github.com/Open-CMSIS-Pack/SW-Pack-HandsOn/blob/main/ACME.ACMECM4_DFP.pdsc#L8) specified in the `*.pdsc` file.
 
 Refer to [Publish a Pack](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/createPackPublish.html) in the Open-CMSIS-Pack specification for further details.
 
-### Issues and Questions
+## Issues and Questions
 
 Use [Issues](https://github.com/Open-CMSIS-Pack/SW-Pack-HandsOn/issues) on this GitHub to raise questions or submit problems.
 
