@@ -213,8 +213,6 @@ This repository may be used to kick start the development of a pack. The followi
 - **Validate the software pack** using the `packchk` tool.
 - **Create the software pack** using the `gen_pack` library.
 
-> A device family example is explained in this [meeting recording](https://linaro.atlassian.net/wiki/spaces/CMSIS/pages/tbd) starting at xx:xx.
-
 ### Local Pack Development
 
 1. Clone this repository (as it serves as a getting started example)
