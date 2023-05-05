@@ -28,7 +28,7 @@
   <!-- devices section (mandatory for Device Family Packs) -->
   <devices>
     <family Dfamily="ACMECM4 Series" Dvendor="Generic:5">
-      <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="FPU" Dmpu="MPU" Dendian="Little-endian"/>
+      <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="NO_FPU" Dmpu="MPU" Dendian="Little-endian"/>
       <description>
         The ACMECM4 device family contains an Arm Cortex-M4 processor, running up to 100 MHz with a versatile set of on-chip peripherals.
       </description>
