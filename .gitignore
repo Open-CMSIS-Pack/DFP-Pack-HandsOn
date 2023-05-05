@@ -54,3 +54,6 @@ dkms.conf
 # Output dirs
 output
 build
+
+# OS Generated Files
+.DS_Store

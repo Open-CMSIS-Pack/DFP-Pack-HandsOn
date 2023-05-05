@@ -23,10 +23,12 @@ A [Board Support Pack (BSP)](https://github.com/Open-CMSIS-Pack/BSP-Pack-HandsOn
 
 - **One way to distribute** device support into all relevant toolchains as CMSIS and the CMSIS-Toolbox supports Arm Compiler, GCC, and IAR.
 
-- **Connect to your users** since you as vendor [control distribution of the DSP and BSP](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/createPackPublish.html). During a beta phase it is possible to deliver the packs using standard file sharing.
+- **Connect to users:** as a device vendor you control distribution to multiple tools and web portals. For [Arm's pack index](https://www.keil.arm.com/packs/) new releases are scanned once per day, making the pack and the [devices](https://www.keil.arm.com/devices) defined inside it publicly available. Every device, device group, family or subfamily has a page automatically generated on keil.arm.com that displays all available information about the device(s). Device pages display compatible development boards (based on the mounted device specified for a board) and link back to the parent Pack.
   - Once a pack is published, various delivery services may pick up the device. The pack service on [www.keil.arm.com](https://www.keil.arm.com/packs/) scans your pack repository once per day.
   - Features that you specify in the packs are enable web search that helps users to identify devices and boards based on project requirements.
   - Adding documentation and purchase links lets you connect with your customers.
+
+  ![Example of a device page generated from PDSC data](Images/example-device-page-keil-arm-com.png)
 
 - **Reduces support efforts** as packs make it easier for users to integrate software in projects
   - The Product Lifecycle Management capabilities of the pack-enabled tools make it easy to update software packs when required.
@@ -34,7 +36,7 @@ A [Board Support Pack (BSP)](https://github.com/Open-CMSIS-Pack/BSP-Pack-HandsOn
 - **Access to examples** that may be part of packs quick-start user projects.
   - Adding one board layer can support many different standardized examples that are based on the Reference Example Framework.
 
->To learn more review the session about [Generating CMSIS-Packs for Devices and Boards](https://linaro.atlassian.net/wiki/spaces/CMSIS/pages/28905996344/Open-CMSIS-Pack+Technical+Meeting+2023-05-02).
+To learn more review the session about [Generating CMSIS-Packs for Devices and Boards](https://linaro.atlassian.net/wiki/spaces/CMSIS/pages/28905996344/Open-CMSIS-Pack+Technical+Meeting+2023-05-02).
 
 ## DFP Content
 
@@ -101,8 +103,8 @@ This repository contains a example DFP of a fictional device family called ACMEC
     <td colspan="2"><strong>ACMECM4200</strong></td>
   </tr>
   <tr>
-    <td colspan="2">The ACMECM4100 sub-family runs up to 50 MHz </td>
-    <td colspan="2">The ACMECM4100 sub-family runs up to 100 MHz=</td>
+    <td colspan="2">The ACMECM4100 sub-family runs up to 50 MHz</td>
+    <td colspan="2">The ACMECM4100 sub-family runs up to 100 MHz</td>
   </tr>
   <tr>
     <td>I/Os</td>
@@ -209,7 +211,8 @@ This repository may be used to kick start the development of a pack. The followi
   - Think about the partitioning of your device family: what do the devices have in common (reduces effort in creating the PRDC file).
   - Create [Flash programming algorithms](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/flashAlgorithm.html) for your devices.
 - **Organize and create the file list** that will be delivered as Pack
-- **Create the [PDSC file](ACME.ACMECM4_DFP.pdsc)** using your favorite editor (we recommend VS Code with XML extension).
+- **Create the [PDSC file](ACME.ACMECM4_DFP.pdsc)** using your favorite editor (we recommend VS Code with XML extension). 
+A complete list of availble fields used to describe devices is available in the [Open-CMSIS-Pack Spec](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_devices_pg.html).
 - **Validate the software pack** using the `packchk` tool.
 - **Create the software pack** using the `gen_pack` library.
 
