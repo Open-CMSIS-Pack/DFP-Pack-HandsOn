@@ -22,13 +22,7 @@
  * limitations under the License.
  */
 
-#if defined (ARMCM4)
-  #include "ARMCM4.h"
-#elif defined (ARMCM4_FP)
-  #include "ARMCM4_FP.h"
-#else
-  #error device not specified!
-#endif
+#include "ACMECM4xxx.h"
 
 /*----------------------------------------------------------------------------
   External References
