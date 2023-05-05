@@ -28,11 +28,11 @@
   <!-- devices section (mandatory for Device Family Packs) -->
   <devices>
     <family Dfamily="ACMECM4 Series" Dvendor="Generic:5">
-      <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="FPU" Dmpu="MPU" Dendian="Little-endian"/>
+      <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="NO_FPU" Dmpu="MPU" Dendian="Little-endian"/>
       <description>
         The ACMECM4 device family contains an Arm Cortex-M4 processor, running up to 100 MHz with a versatile set of on-chip peripherals.
       </description>
-   	  <compile    header="Device/Include/ACMECM4xxx.h"/>
+      <compile    header="Device/Include/ACMECM4xxx.h"/>
       <debug      svd="SVD/ACMECM4xxx.svd"/>
       <book       name="Docs/ACMECM4XXX_Datasheet.pdf"      title="ACMECM4 Series Datasheet"/>
       <book       name="Docs/ACMECM4XXX_Product_Brief.pdf"  title="ACMECM4 Product Brief"/>
@@ -48,19 +48,19 @@
         <feature type="I2C"           n="1"/>
         <feature type="UART"          n="4"/>
         <feature type="Timer"         n="6"       m="32"/>
-    		<feature type="QFP"           n="32"/>
+        <feature type="QFP"           n="32"/>
         <!-- *************************  Device 'ACMECM4110'  ***************************** -->
         <device Dname="ACMECM4110">
           <memory     id="IROM1"                      start="0x00000000"  size="0x4000"  startup="1"   default="1"/>
           <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"  init   ="0"   default="1"/>
-    		  <algorithm  name="Flash/ACMECM4XXX_16.FLM"  start="0x00000000"  size="0x4000"  default="1"/>
+          <algorithm  name="Flash/ACMECM4XXX_16.FLM"  start="0x00000000"  size="0x4000"  default="1"/>
           <feature    type="PWM"           n="2" m="16"/>
         </device>
         <!-- *************************  Device 'ACMECM4120'  ***************************** -->
         <device Dname="ACMECM4120">
           <memory     id="IROM1"                      start="0x00000000"  size="0x8000"  startup="1"   default="1"/>
           <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"  init   ="0"   default="1"/>
-    		  <algorithm  name="Flash/ACMECM4XXX_32.FLM"  start="0x00000000"  size="0x8000"  default="1"/>
+          <algorithm  name="Flash/ACMECM4XXX_32.FLM"  start="0x00000000"  size="0x8000"  default="1"/>
         </device>
       </subFamily>
       <!-- ************************  Subfamily 'ACMECM4200'  **************************** -->
@@ -70,13 +70,13 @@
         <device Dname="ACMECM4250">
           <memory     id="IROM1"                      start="0x00000000"  size="0x4000"  startup="1"   default="1"/>
           <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"  init   ="0"   default="1"/>
-    		  <algorithm  name="Flash/ACMECM4XXX_16.FLM"  start="0x00000000"  size="0x4000"  default="1"/>
+          <algorithm  name="Flash/ACMECM4XXX_16.FLM"  start="0x00000000"  size="0x4000"  default="1"/>
         </device>
         <!-- *************************  Device 'ACMECM4260'  ***************************** -->
         <device Dname="ACMECM4260">
           <memory     id="IROM1"                      start="0x00000000"  size="0x8000"  startup="1"   default="1"/>
           <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"  init   ="0"   default="1"/>
-    		  <algorithm  name="Flash/ACMECM4XXX_32.FLM"  start="0x00000000"  size="0x8000"  default="1"/>
+          <algorithm  name="Flash/ACMECM4XXX_32.FLM"  start="0x00000000"  size="0x8000"  default="1"/>
         </device>
       </subFamily>
     </family>
