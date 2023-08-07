@@ -51,15 +51,15 @@
         <feature type="QFP"           n="32"/>
         <!-- *************************  Device 'ACMECM4110'  ***************************** -->
         <device Dname="ACMECM4110">
-          <memory     id="IROM1"                      start="0x00000000"  size="0x4000"  startup="1"   default="1"/>
-          <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"  init   ="0"   default="1"/>
+          <memory     name=ROM" access="rx"           start="0x00000000"  size="0x4000"  startup="1"   default="1"/>
+          <memory     name=RAM" access="rwx"          start="0x20000000"  size="0x0800"  init   ="0"   default="1"/>
           <algorithm  name="Flash/ACMECM4XXX_16.FLM"  start="0x00000000"  size="0x4000"  default="1"/>
           <feature    type="PWM"           n="2" m="16"/>
         </device>
         <!-- *************************  Device 'ACMECM4120'  ***************************** -->
         <device Dname="ACMECM4120">
-          <memory     id="IROM1"                      start="0x00000000"  size="0x8000"  startup="1"   default="1"/>
-          <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"  init   ="0"   default="1"/>
+          <memory     name=ROM" access="rx"           start="0x00000000"  size="0x8000"  startup="1"   default="1"/>
+          <memory     name=RAM" access="rwx"          start="0x20000000"  size="0x1000"  init   ="0"   default="1"/>
           <algorithm  name="Flash/ACMECM4XXX_32.FLM"  start="0x00000000"  size="0x8000"  default="1"/>
         </device>
       </subFamily>
@@ -68,14 +68,14 @@
         <processor  Dclock="100000000"/>
         <!-- *************************  Device 'ACMECM4250'  ***************************** -->
         <device Dname="ACMECM4250">
-          <memory     id="IROM1"                      start="0x00000000"  size="0x4000"  startup="1"   default="1"/>
-          <memory     id="IRAM1"                      start="0x20000000"  size="0x0800"  init   ="0"   default="1"/>
+          <memory     name=ROM" access="rx"           start="0x00000000"  size="0x4000"  startup="1"   default="1"/>
+          <memory     name=RAM" access="rwx"          start="0x20000000"  size="0x0800"  init   ="0"   default="1"/>
           <algorithm  name="Flash/ACMECM4XXX_16.FLM"  start="0x00000000"  size="0x4000"  default="1"/>
         </device>
         <!-- *************************  Device 'ACMECM4260'  ***************************** -->
         <device Dname="ACMECM4260">
-          <memory     id="IROM1"                      start="0x00000000"  size="0x8000"  startup="1"   default="1"/>
-          <memory     id="IRAM1"                      start="0x20000000"  size="0x1000"  init   ="0"   default="1"/>
+          <memory     name=ROM" access="rx"           start="0x00000000"  size="0x8000"  startup="1"   default="1"/>
+          <memory     name=RAM" access="rwx"          start="0x20000000"  size="0x1000"  init   ="0"   default="1"/>
           <algorithm  name="Flash/ACMECM4XXX_32.FLM"  start="0x00000000"  size="0x8000"  default="1"/>
         </device>
       </subFamily>
