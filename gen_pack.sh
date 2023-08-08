@@ -1,6 +1,6 @@
-#!/bin/bash
-# Version: 2.6
-# Date: 2023-04-17
+#!/usr/bin/env bash
+# Version: 2.7
+# Date: 2023-05-22
 # This bash script generates a CMSIS Software Pack:
 #
 
@@ -9,7 +9,7 @@ set -o pipefail
 # Set version of gen pack library
 # For available versions see https://github.com/Open-CMSIS-Pack/gen-pack/tags.
 # Use the tag name without the prefix "v", e.g., 0.7.0
-REQUIRED_GEN_PACK_LIB="0.8.0"
+REQUIRED_GEN_PACK_LIB="0.8.4"
 
 # Set default command line arguments
 DEFAULT_ARGS=()
@@ -29,7 +29,7 @@ DEFAULT_ARGS=()
 # Default: empty (all folders)
 #
 # PACK_DIRS="
-#    <list directories here>
+#   <list directories here>
 # "
 
 # Specify file names to be added to pack base directory
@@ -43,7 +43,7 @@ DEFAULT_ARGS=()
 # Specify file names to be deleted from pack build directory
 # Default: empty
 #
-PACK_DELETE_FILES="
+# PACK_DELETE_FILES="
 README.md
 gen_pack.sh
 .gitignore
@@ -65,7 +65,7 @@ gen_pack.sh
 # Default: empty
 #
 # PACKCHK_DEPS="
-#     <list pdsc files here>
+#   <list pdsc files here>
 # "
 
 # Optional: restrict fallback modes for changelog generation
