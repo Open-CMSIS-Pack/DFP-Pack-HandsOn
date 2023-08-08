@@ -43,7 +43,7 @@ DEFAULT_ARGS=()
 # Specify file names to be deleted from pack build directory
 # Default: empty
 #
-# PACK_DELETE_FILES="
+PACK_DELETE_FILES="
 README.md
 gen_pack.sh
 .gitignore
