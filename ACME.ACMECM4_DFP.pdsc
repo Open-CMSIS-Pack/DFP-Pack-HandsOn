@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<package schemaVersion="1.7.7" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.7/schema/PACK.xsd">
+<package schemaVersion="1.7.37" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.37/schema/PACK.xsd">
   <vendor>ACME</vendor>
   <name>ACMECM4_DFP</name>
   <description>ACMECM4 Arm Cortex-M4 Device Family Pack</description>
   <url>https://www.acme-website.com/pack/</url>
   <repository type="git">https://github.com/Open-CMSIS-Pack/DFP-Pack-HandsOn.git</repository>
   <supportContact>support@acme-corp.com</supportContact>
-  <!-- optional license file -->
-  <!-- 
-  <license>
-  </license>
-  -->
+  <license>LICENSE</license>
+  <licenseSets>
+    <licenseSet id="all" default="true" gating="true">
+      <license name="LICENSE" title="Apache 2.0 License"/>
+    </licenseSet>
+  </licenseSets>
   
   <releases>
+    <release version="1.0.1" date="2024-06-10">
+      Updated gen_pack.sh script.
+      Added License.
+    </release>
     <release version="1.0.0" date="2023-04-21">
       Initial Version
     </release>
