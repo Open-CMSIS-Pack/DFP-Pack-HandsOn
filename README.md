@@ -206,7 +206,7 @@ This repository may be used to kick start the development of a pack. The followi
 ### Steps to Create a Device Family Pack
 
 - **Structure your device family**
-  - First, copy the system and startup files for your selected Arm Cortex-M core from the [CMSIS_DFP repository](https://github.com/Arm-Software/CMSIS_DFP). This is a good starting point for any device based on Arm IP.
+  - First, copy the system and startup files for your selected Arm Cortex-M core from the [CMSIS_DFP repository](https://github.com/Arm-Software/Cortex_DFP). This is a good starting point for any device based on Arm IP.
   - Create one or more SVD files for the device family from your design software. This is the starting point for creating the device header file(s).
   - Think about the partitioning of your device family: what do the devices have in common (reduces effort in creating the PRDC file).
   - Create [Flash programming algorithms](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/flashAlgorithm.html) for your devices.
