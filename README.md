@@ -40,13 +40,13 @@ To learn more review the session about [Generating CMSIS-Packs for Devices and B
 
 ## DFP Content
 
-- Defines the [properties of a device or a device family](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/cp_PackTutorial.html#cp_DeviceProperties).
+- Defines the [properties of a device or a device family](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_devices_pg.html).
   - [Processor core definition](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_processor) (multi-core devices have multiple processor core definitions)
   - Processor core configuration of specifies such as FPU, MPU, TrustZone.
   - [Debug](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_debug) and [Trace](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_trace) configuration of the device along with specific sequences. The [Debug Setup Tutorial](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/dbg_setup_tutorial.html) contains further details.
-- [On-device memory](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_memory) areas with description and [Flash algorithms](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/cp_PackTutorial.html#cp_FlashProgrammingAlgorithm).
-- [SVD file](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/cp_PackTutorial.html#cp_SVD) that describes the peripherals of a device.
-- [Device startup code, system file, and device header](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/cp_PackTutorial.html#cp_System_Startup).
+- [On-device memory](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_memory) areas with description and [Flash algorithms](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/flashAlgorithm.html).
+- [SVD file](https://open-cmsis-pack.github.io/svd-spec/main/index.html) that describes the peripherals of a device.
+- [Device startup code, system file, and device header](https://arm-software.github.io/CMSIS_6/latest/Core/cmsis_device_files.html).
 
 **Optional pack content** that improves the overall usability:
 
