@@ -57,7 +57,7 @@ To learn more review the session about [Generating CMSIS-Packs for Devices and B
 
 ## Example DFP
 
-This repository contains a example DFP of a fictional device family called ACMECM4 from the imaginary device vendor ACME. The device family consists of four members that are separated into two sub-families. The specification of the MVCM3 family is as follows:
+This repository contains a example DFP of a fictional device family called ACMECM4 from the imaginary device vendor ACME. The device family consists of four members that are separated into two sub-families. The specification of the ACMECM4 family is as follows:
 
 <table>
   <tr>
