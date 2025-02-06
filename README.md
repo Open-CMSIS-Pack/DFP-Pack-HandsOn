@@ -8,6 +8,7 @@ A [Board Support Pack (BSP)](https://github.com/Open-CMSIS-Pack/BSP-Pack-HandsOn
 - [Create a Device Family Pack - Hands-On Example](#create-a-device-family-pack---hands-on-example)
   - [Benefits of Packs to deliver device and board support](#benefits-of-packs-to-deliver-device-and-board-support)
   - [DFP Content](#dfp-content)
+  - [Updating to CMSIS v6](#updating-to-cmsis-v6)
   - [Example DFP](#example-dfp)
   - [Pack Development](#pack-development)
     - [Tool-Environment (Recommended)](#tool-environment-recommended)
@@ -17,7 +18,6 @@ A [Board Support Pack (BSP)](https://github.com/Open-CMSIS-Pack/BSP-Pack-HandsOn
   - [Pack Creation on GitHub](#pack-creation-on-github)
   - [Publish Pack](#publish-pack)
   - [Issues and Questions](#issues-and-questions)
-
 
 ## Benefits of Packs to deliver device and board support
 
@@ -54,6 +54,13 @@ To learn more review the session about [Generating CMSIS-Packs for Devices and B
 - Device specific software drivers and in case that the device is supported by a configuration tool the related generator information.
 - Standardized [CMSIS-Driver](https://arm-software.github.io/CMSIS_5/Driver/html/index.html) that enable standard middleware and software examples.
 - [Device features](https://open-cmsis-pack.github.io/Open-CMSIS-Pack-Spec/main/html/pdsc_family_pg.html#element_feature) that enable search capabilities at web portals.
+
+## Updating to CMSIS v6
+
+The ["Migrating CMSIS-Packs to CMSIS v6" learning path](https://learn.arm.com/learning-paths/embedded-and-microcontrollers/pack-migration-cmsis-v6/)
+contains valuable information for device vendors who wish to upgrade to the latest CMSIS standard. Upgrading results in
+an enhanced support for multiple compilers (such as Arm Compiler 6, GCC, LLVM). Together with the
+[CMSIS-Toolbox](https://open-cmsis-pack.github.io/cmsis-toolbox/) this increases portability of embedded projects between toolchains.
 
 ## Example DFP
 

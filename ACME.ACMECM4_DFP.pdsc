@@ -3,7 +3,7 @@
 <package schemaVersion="1.7.37" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.37/schema/PACK.xsd">
   <vendor>ACME</vendor>
   <name>ACMECM4_DFP</name>
-  <description>ACMECM4 Arm Cortex-M4 Device Family Pack</description>
+  <description overview="Docs/Overview.md">ACMECM4 Arm Cortex-M4 Device Family Pack</description>
   <url>https://www.acme-website.com/pack/</url>
   <repository type="git">https://github.com/Open-CMSIS-Pack/DFP-Pack-HandsOn.git</repository>
   <supportContact>support@acme-corp.com</supportContact>
@@ -15,6 +15,10 @@
   </licenseSets>
   
   <releases>
+    <release version="1.1.0" date="2025-02-05">
+      Added Overview.md.
+      Added CRC component with HTML documentation.
+    </release>
     <release version="1.0.1" date="2024-06-10">
       Updated gen_pack.sh script.
       Added License.
@@ -105,6 +109,11 @@
       <description>ACME ACMECM4 Device and CMSIS-CORE</description>
       <require condition="ACMECM4 CMSIS-CORE"/>
     </condition>
+    <condition id="ACMECM4 Startup">
+      <description>ACME ACMECM4 Device Startup Component</description>
+      <require Dvendor="Generic:5" Dname="ACMECM4*"/>
+      <require Cclass="Device" Cgroup="Startup"/>
+    </condition>
   </conditions>
   
   <!-- component section (optional for all Software Packs)-->
@@ -118,13 +127,26 @@
         <file category="source"  name="Device/Source/system_ARMCM4.c"  attr="config" version="1.0.0"/>
       </files>
     </component>
-    <component Cclass="CMSIS Driver" Cgroup="USART" Csub="ACMECM4XXX" Cversion="1.0.0" Capiversion="2.4.0" condition="ACMECM4 CMSIS-Driver USART">
+    <component Cclass="Device" Cgroup="CRC" Cversion="1.0.0" condition="ACMECM4 Startup">
+      <description>CRC for ACME ACMECM4 Series</description>
+      <files>
+        <file category="doc"     name="Docs/Components/crc.html"/>
+        <file category="header"  name="Device/Include/crc32.h"/>
+        <file category="source"  name="Device/Source/crc32.c" version="1.0.0"/>
+      </files>
+    </component>
+    <component Cclass="CMSIS Driver" Cgroup="USART" Csub="ACMECM4XXX" Cversion="1.1.0" Capiversion="2.4.0" condition="ACMECM4 CMSIS-Driver USART">
       <description>Access to #include Driver_USART.h file and implementation for ACMECM4XXX</description>
       <RTE_Components_h>  <!-- the following content goes into file 'RTE_Components.h' -->
         #define RTE_Drivers_USART1                /* Driver USART1 */
         #define RTE_Drivers_USART2                /* Driver USART2 */
         #define RTE_Drivers_USART3                /* Driver USART3 */
+        #define RTE_Drivers_USART4                /* Driver USART4 */
       </RTE_Components_h>
+      <Pre_Include_Global_h>
+        // example of a global pre inlcude
+        #define GLOBAL_USART_Component 0x4
+      </Pre_Include_Global_h>
       <files >
         <file category="sourceC" name="CMSIS/Driver/USART/Source/Driver_USART.c" select="USART Driver"/>
       </files>
