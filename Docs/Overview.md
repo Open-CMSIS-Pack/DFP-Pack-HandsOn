@@ -7,9 +7,6 @@
 <!-- Additional CMSIS-Packs that are required for the contents to work. -->
 ## Related packs
 
-<!-- Link to GitHub repo if available. -->
-## GitHub repo
-
 <!-- Description of the example projects provided in the CMSIS-Pack. -->
 ## Examples
 
@@ -22,17 +19,16 @@
 <!-- Additional usage information. -->
 ## Usage
 
-<!-- Description of the configuration options and required tools. -->
-## Configuration
+<!-- Usage subsection: Description of the configuration options. -->
+### Configuration
 
-<!-- Description of any required tools and deviations from the CMSIS-Pack standard. -->
-## Tools or deviations from CMSIS standard
+<!-- Usage subsection: Description of any required tools and deviations from the CMSIS-Pack standard. -->
+### Tools or deviations from CMSIS standard
 
 <!-- Useful links with documentation/help/forums. -->
 ## Links
 
-<!-- Link to board product page. -->
-## Product page
-
-<!-- How to contact support. -->
-## Support
+- Product page
+- GitHub repository
+- Support
+- User forum
