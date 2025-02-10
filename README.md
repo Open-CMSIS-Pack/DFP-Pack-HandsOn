@@ -171,7 +171,7 @@ This repository contains a example DFP of a fictional device family called ACMEC
     <td>RAM</td>
     <td>4 kB SRAM</td>
     <td>RAM</td>
-    <td>4 kB SRAM</td>
+    <td>32 kB SRAM</td>
   </tr>
   <tr>
     <td>Flash</td>

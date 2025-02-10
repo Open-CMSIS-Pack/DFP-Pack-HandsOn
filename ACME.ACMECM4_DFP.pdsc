@@ -87,7 +87,7 @@
         <!-- *************************  Device 'ACMECM4260'  ***************************** -->
         <device Dname="ACMECM4260">
           <memory     name="ROM" access="rx"          start="0x00000000"  size="0x8000"  startup="1"   default="1"/>
-          <memory     name="RAM" access="rwx"         start="0x20000000"  size="0x1000"  init   ="0"   default="1"/>
+          <memory     name="RAM" access="rwx"         start="0x20000000"  size="0x8000"  init   ="0"   default="1"/>
           <algorithm  name="Flash/ACMECM4XXX_32.FLM"  start="0x00000000"  size="0x8000"  default="1"/>
         </device>
       </subFamily>
