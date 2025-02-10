@@ -1,34 +1,43 @@
-<!-- The introduction section should contain a quick overview of the contents of the CMSIS-Pack. -->
-# Introduction
-
-<!-- Detailed CMSIS-Pack content list. -->
 ## Pack Content
+<!-- Todo: Detailed CMSIS-Pack content list. -->
 
-<!-- Additional CMSIS-Packs that are required for the contents to work. -->
+This device family pack contains the following:
+
+| Content              | Description |
+|----------------------|-------------|
+| ./.github/workflows  | GitHub workflows for building the pack and testing the examples. |
+| ./CMSIS              | [CMSIS-Drivers USART](#drivers) |
+| ./Device             | Software components for device startup and CRC32 |
+| ./Docs               | Documentation (device and software components). |
+| ./Flash              | Flash programming algorithm for teh devices. |
+| ./SVD                | Device family SVD files |
+
 ## Related packs
+<!-- Todo: Additional CMSIS-Packs that are required for the contents to work. -->
 
-<!-- Description of the example projects provided in the CMSIS-Pack. -->
-## Examples
-
-<!-- Description of the csolution layers provided in the CMSIS-Pack. -->
-## Layers
-
-<!-- Description of the HAL/CMSIS-Drivers provided in the CMSIS-Pack. -->
 ## Drivers
+<!-- Todo: Description of the HAL/CMSIS-Drivers provided in the CMSIS-Pack. -->
 
-<!-- Additional usage information. -->
+| Drivers                                    | Description |
+|--------------------------------------------|-------------|
+| [CMSIS-Driver USART](./CMSIS/Driver/USART) | CMSIS-Driver USART for ACMECM4 family. |
+|                                            |             |
+
 ## Usage
+<!-- Todo: Additional usage information. -->
 
-<!-- Usage subsection: Description of the configuration options. -->
 ### Configuration
+<!-- Todo: Usage subsection: Description of the configuration options. -->
 
-<!-- Usage subsection: Description of any required tools and deviations from the CMSIS-Pack standard. -->
 ### Tools or deviations from CMSIS standard
+<!-- Todo: Usage subsection: Description of any required tools and deviations from the CMSIS-Pack standard. -->
 
-<!-- Useful links with documentation/help/forums. -->
 ## Links
+<!-- Todo: Useful links with documentation/help/forums. -->
 
-- Product page
-- GitHub repository
-- Support
-- User forum
+| Link             | Description |
+|------------------|-------------|
+| [Product page]() | Information regarding the board. |
+| [GitHub Repo]()  | Location of the BSP repository. |
+| [Support]()      | How to contact support. |
+| [User forum]()   | Public user forum. |
