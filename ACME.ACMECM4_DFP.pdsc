@@ -15,6 +15,9 @@
   </licenseSets>
   
   <releases>
+    <release version="1.1.1" date="2025-02-10">
+      Slight improvements.
+    </release>
     <release version="1.1.0" date="2025-02-05">
       Added Overview.md.
       Added CRC component with HTML documentation.
@@ -84,7 +87,7 @@
         <!-- *************************  Device 'ACMECM4260'  ***************************** -->
         <device Dname="ACMECM4260">
           <memory     name="ROM" access="rx"          start="0x00000000"  size="0x8000"  startup="1"   default="1"/>
-          <memory     name="RAM" access="rwx"         start="0x20000000"  size="0x1000"  init   ="0"   default="1"/>
+          <memory     name="RAM" access="rwx"         start="0x20000000"  size="0x8000"  init   ="0"   default="1"/>
           <algorithm  name="Flash/ACMECM4XXX_32.FLM"  start="0x00000000"  size="0x8000"  default="1"/>
         </device>
       </subFamily>
@@ -137,16 +140,6 @@
     </component>
     <component Cclass="CMSIS Driver" Cgroup="USART" Csub="ACMECM4XXX" Cversion="1.1.0" Capiversion="2.4.0" condition="ACMECM4 CMSIS-Driver USART">
       <description>Access to #include Driver_USART.h file and implementation for ACMECM4XXX</description>
-      <RTE_Components_h>  <!-- the following content goes into file 'RTE_Components.h' -->
-        #define RTE_Drivers_USART1                /* Driver USART1 */
-        #define RTE_Drivers_USART2                /* Driver USART2 */
-        #define RTE_Drivers_USART3                /* Driver USART3 */
-        #define RTE_Drivers_USART4                /* Driver USART4 */
-      </RTE_Components_h>
-      <Pre_Include_Global_h>
-        // example of a global pre inlcude
-        #define GLOBAL_USART_Component 0x4
-      </Pre_Include_Global_h>
       <files >
         <file category="sourceC" name="CMSIS/Driver/USART/Source/Driver_USART.c" select="USART Driver"/>
       </files>
