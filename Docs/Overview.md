@@ -3,41 +3,35 @@
 
 This device family pack contains the following:
 
-| Content              | Description |
-|----------------------|-------------|
-| ./.github/workflows  | GitHub workflows for building the pack and testing the examples. |
-| ./CMSIS              | [CMSIS-Drivers USART](#drivers) |
-| ./Device             | Software components for device startup and CRC32 |
-| ./Docs               | Documentation (device and software components). |
-| ./Flash              | Flash programming algorithm for teh devices. |
-| ./SVD                | Device family SVD files |
+- Software components for device startup and CRC32.
+- Documentation (device and software components).
+- Flash programmings algorithm for the devices.
+- Device family SVD files.
 
 ## Related packs
 <!-- Todo: Additional CMSIS-Packs that are required for the contents to work. -->
+```yml
+    - pack: ARM::CMSIS@6.1.0      # Arm CMSIS pack
+```
 
 ## Drivers
 <!-- Todo: Description of the HAL/CMSIS-Drivers provided in the CMSIS-Pack. -->
-
-| Drivers                                    | Description |
-|--------------------------------------------|-------------|
-| [CMSIS-Driver USART](./CMSIS/Driver/USART) | CMSIS-Driver USART for ACMECM4 family. |
-|                                            |             |
+```yml
+    - component: CMSIS-Driver:USART             # USART Driver for the device family
+```
+<!-- Todo: [Optional] add more drivers:
+```yml
+    - component: HAL:Common             # description
+```
+-->
 
 ## Usage
 <!-- Todo: Additional usage information. -->
 
-### Configuration
-<!-- Todo: Usage subsection: Description of the configuration options. -->
-
-### Tools or deviations from CMSIS standard
-<!-- Todo: Usage subsection: Description of any required tools and deviations from the CMSIS-Pack standard. -->
-
 ## Links
-<!-- Todo: Useful links with documentation/help/forums. -->
-
-| Link             | Description |
-|------------------|-------------|
-| [Product page]() | Information regarding the board. |
-| [GitHub Repo]()  | Location of the BSP repository. |
-| [Support]()      | How to contact support. |
-| [User forum]()   | Public user forum. |
+<!-- Todo: Useful links with documentation/help/forums.
+- [Product page]()
+- [GitHub Repo]()
+- [Support]() 
+- [User forum]()
+ -->
