@@ -252,12 +252,6 @@ Using  **Git Bash** console:
 packchk ACME.ACMECM4_DFP.pdsc -i $CMSIS_PACK_ROOT/ARM/CMSIS/6.1.0/ARM.CMSIS.pdsc
 ```
 
-With CMSIS-Toolbox v2.7.0 the XML schema check is available with packchk, the command may be then extended to:
-
-```txt
-packchk ACME.ACMECM4_DFP.pdsc -i $CMSIS_PACK_ROOT/ARM/CMSIS/6.1.0/ARM.CMSIS.pdsc -s /c/Keil_v5/UV4/PACK.xsd
-```
-
 The pack can be created locally in the directory `output` using **Git Bash**:
 
 ```txt
