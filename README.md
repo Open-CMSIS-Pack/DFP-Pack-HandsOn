@@ -21,7 +21,7 @@ A [Board Support Pack (BSP)](https://github.com/Open-CMSIS-Pack/BSP-Pack-HandsOn
 
 ## Benefits of Packs to deliver device and board support
 
-- **One way to distribute** device support into all relevant toolchains as CMSIS and the CMSIS-Toolbox supports Arm Compiler, GCC, and IAR.
+- **One way to distribute** device support into all relevant toolchains as CMSIS and the CMSIS-Toolbox supports Arm Compiler, GCC, IAR, and LLVM.
 
 - **Connect to users:** as a device vendor you control distribution to multiple tools and web portals. For [Arm's pack index](https://www.keil.arm.com/packs/) new releases are scanned once per day, making the pack and the [devices](https://www.keil.arm.com/devices) defined inside it publicly available. Every device, device group, family or subfamily has a page automatically generated on keil.arm.com that displays all available information about the device(s). Device pages display compatible development boards (based on the mounted device specified for a board) and link back to the parent Pack.
   - Once a pack is published, various delivery services may pick up the device. The pack service on [www.keil.arm.com](https://www.keil.arm.com/packs/) scans your pack repository once per day.
@@ -206,8 +206,8 @@ This repository may be used to kick start the development of a pack. The followi
 
 ### Tool-Environment (Recommended)
 
-- MDK v5.38 with default installation path (C:\Keil_v5\)
-- [CMSIS-Toolbox v1.6.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher (update files in C:\Keil_v5\ARM\ctools)
+- MDK v5.41 with default installation path (C:\Keil_v5\)
+- [CMSIS-Toolbox v2.7.0](https://github.com/Open-CMSIS-Pack/cmsis-toolbox/releases) or higher (update files in C:\Keil_v5\ARM\ctools)
 - [VS Code](https://code.visualstudio.com/) with [XML Language Support by Red Hat](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml)
 
 ### Steps to Create a Device Family Pack
@@ -243,19 +243,19 @@ After modifications to the [PDSC file](ACME.ACMECM4_DFP.pdsc) run `packchk`; inc
 Using **Command Prompt**:
 
 ```txt
-packchk ACME.ACMECM4_DFP.pdsc -i %CMSIS_PACK_ROOT%/ARM/CMSIS/5.9.0/ARM.CMSIS.pdsc
+packchk ACME.ACMECM4_DFP.pdsc -i %CMSIS_PACK_ROOT%/ARM/CMSIS/6.1.0/ARM.CMSIS.pdsc
 ```
 
 Using  **Git Bash** console:
 
 ```txt
-packchk ACME.ACMECM4_DFP.pdsc -i $CMSIS_PACK_ROOT/ARM/CMSIS/5.9.0/ARM.CMSIS.pdsc
+packchk ACME.ACMECM4_DFP.pdsc -i $CMSIS_PACK_ROOT/ARM/CMSIS/6.1.0/ARM.CMSIS.pdsc
 ```
 
-With CMSIS-Toolbox v1.7.0 the XML schema check is available with packchk, the command may be then extended to:
+With CMSIS-Toolbox v2.7.0 the XML schema check is available with packchk, the command may be then extended to:
 
 ```txt
-packchk ACME.ACMECM4_DFP.pdsc -i $CMSIS_PACK_ROOT/ARM/CMSIS/5.9.0/ARM.CMSIS.pdsc -s /c/Keil_v5/UV4/PACK.xsd
+packchk ACME.ACMECM4_DFP.pdsc -i $CMSIS_PACK_ROOT/ARM/CMSIS/6.1.0/ARM.CMSIS.pdsc -s /c/Keil_v5/UV4/PACK.xsd
 ```
 
 The pack can be created locally in the directory `output` using **Git Bash**:
