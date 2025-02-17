@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <package schemaVersion="1.7.37" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Open-CMSIS-Pack/Open-CMSIS-Pack-Spec/v1.7.37/schema/PACK.xsd">
+  <!-- Must have - software pack vendor name: -->
   <vendor>ACME</vendor>
+  <!-- Must have - software pack name: -->
   <name>ACMECM4_DFP</name>
+  <!-- Strongly recommended - pack descriptopn with Overview.md file: -->
   <description overview="Docs/Overview.md">ACMECM4 Arm Cortex-M4 Device Family Pack</description>
+  <!-- Optional - pack download URL (if publicly available): -->
   <url>https://www.acme-website.com/pack/</url>
+  <!-- Optional - Git repo URL (if applicable): -->
   <repository type="git">https://github.com/Open-CMSIS-Pack/DFP-Pack-HandsOn.git</repository>
+  <!-- Strongly recommended - support contact information: -->
   <supportContact>support@acme-corp.com</supportContact>
+  <!-- Must have - licensing information (for software BOM): -->
   <license>LICENSE</license>
   <licenseSets>
     <licenseSet id="all" default="true" gating="true">
@@ -14,6 +21,7 @@
     </licenseSet>
   </licenseSets>
   
+  <!-- Must have - pack release information vor versioning: -->
   <releases>
     <release version="1.1.1" date="2025-02-10">
       Slight improvements.
@@ -32,22 +40,28 @@
   </releases>
 
   <keywords>
-    <!-- keywords for indexing -->
+    <!-- Optional - keywords for indexing: -->
     <keyword>ACME</keyword>
     <keyword>ACMECM4</keyword>
   </keywords>
 
-  <!-- devices section (mandatory for Device Family Packs) -->
+  <!-- Must have - devices section: -->
   <devices>
     <family Dfamily="ACMECM4 Series" Dvendor="Generic:5">
+      <!-- Must have - processor core and peripherals information: -->
       <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="NO_FPU" Dmpu="MPU" Dendian="Little-endian"/>
+      <!-- Strongly recommended - device family descrption: -->
       <description>
         The ACMECM4 device family contains an Arm Cortex-M4 processor, running up to 100 MHz with a versatile set of on-chip peripherals.
       </description>
+      <!-- Must have - device header file: -->
       <compile    header="Device/Include/ACMECM4xxx.h"/>
+      <!-- Must have - system view description (SVD) file: -->
       <debug      svd="SVD/ACMECM4xxx.svd"/>
+      <!-- Strongly recommended - device-specific documentation: -->
       <book       name="Docs/ACMECM4XXX_Datasheet.pdf"      title="ACMECM4 Series Datasheet"/>
       <book       name="Docs/ACMECM4XXX_Product_Brief.pdf"  title="ACMECM4 Product Brief"/>
+      <!-- Strongly recommended - device family features: -->
       <feature type="ExtInt"        n="16"/>
       <feature type="Temp"          n="-40"     m="105"   name="Extended Temperature Range"/>
       <feature type="VCC"           n="2.5"     m="3.6"/>
@@ -56,6 +70,7 @@
       <!-- ************************  Subfamily 'ACMECM4100'  **************************** -->
       <subFamily DsubFamily="ACMECM4100">
         <processor  Dclock="50000000"/>
+        <!-- Strongly recommended - device sub-family features: -->
         <feature type="IOs"           n="26"/>
         <feature type="I2C"           n="1"/>
         <feature type="UART"          n="4"/>
@@ -63,9 +78,12 @@
         <feature type="QFP"           n="32"/>
         <!-- *************************  Device 'ACMECM4110'  ***************************** -->
         <device Dname="ACMECM4110">
+          <!-- Must have - device memory layout: -->
           <memory     name="ROM" access="rx"          start="0x00000000"  size="0x4000"  startup="1"   default="1"/>
           <memory     name="RAM" access="rwx"         start="0x20000000"  size="0x0800"  init   ="0"   default="1"/>
+          <!-- Must have - download algorithm: -->
           <algorithm  name="Flash/ACMECM4XXX_16.FLM"  start="0x00000000"  size="0x4000"  default="1"/>
+          <!-- Strongly recommended - device features: -->
           <feature    type="PWM"           n="2" m="16"/>
         </device>
         <!-- *************************  Device 'ACMECM4120'  ***************************** -->
@@ -94,14 +112,15 @@
     </family>
   </devices>
 
-  <!-- examples section (optional for all Software Packs)-->
+  <!-- Optional - examples section (better be placed in a board support pack): -->
   <!--
   <examples>
   </examples>
   -->
   
-  <!-- conditions section (optional for all Software Packs)-->
+  <!-- Must have - conditions section: -->
   <conditions>
+    <!-- Must have - condition related to the ARM::CMSIS:CORE component: -->
     <condition id="ACMECM4 CMSIS-CORE">
       <!-- conditions selecting Devices -->
       <description>ACME ACMECM4 Series devices and CMSIS-CORE</description>
@@ -112,6 +131,7 @@
       <description>ACME ACMECM4 Device and CMSIS-CORE</description>
       <require condition="ACMECM4 CMSIS-CORE"/>
     </condition>
+    <!-- Optional - condition related to the Deivce:Startup component  (might be required for vendor HAL): -->
     <condition id="ACMECM4 Startup">
       <description>ACME ACMECM4 Device Startup Component</description>
       <require Dvendor="Generic:5" Dname="ACMECM4*"/>
@@ -119,8 +139,9 @@
     </condition>
   </conditions>
   
-  <!-- component section (optional for all Software Packs)-->
+  <!-- Must have - components section: -->
   <components>
+    <!-- Must have - device startup component; must use Cclass="Device" Cgroup="Startup": -->
     <component Cclass="Device" Cgroup="Startup" Cversion="1.0.0" condition="ACMECM4 CMSIS-CORE">
       <description>System Startup for ACME ACMECM4 Series</description>
       <files>
@@ -130,6 +151,7 @@
         <file category="source"  name="Device/Source/system_ARMCM4.c"  attr="config" version="1.0.0"/>
       </files>
     </component>
+    <!-- Optional - device specific software component: -->
     <component Cclass="Device" Cgroup="CRC" Cversion="1.0.0" condition="ACMECM4 Startup">
       <description>CRC for ACME ACMECM4 Series</description>
       <files>
@@ -138,6 +160,7 @@
         <file category="source"  name="Device/Source/crc32.c" version="1.0.0"/>
       </files>
     </component>
+    <!-- Optional - device specific CMSIS-Driver: -->
     <component Cclass="CMSIS Driver" Cgroup="USART" Csub="ACMECM4XXX" Cversion="1.1.0" Capiversion="2.4.0" condition="ACMECM4 CMSIS-Driver USART">
       <description>Access to #include Driver_USART.h file and implementation for ACMECM4XXX</description>
       <files >
