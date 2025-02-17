@@ -131,7 +131,7 @@
       <description>ACME ACMECM4 Device and CMSIS-CORE</description>
       <require condition="ACMECM4 CMSIS-CORE"/>
     </condition>
-    <!-- Optional - condition related to the Deivce:Startup component  (might be required for vendor HAL): -->
+    <!-- Optional - condition related to the Device:Startup component (might be required for vendor HAL): -->
     <condition id="ACMECM4 Startup">
       <description>ACME ACMECM4 Device Startup Component</description>
       <require Dvendor="Generic:5" Dname="ACMECM4*"/>
