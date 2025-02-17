@@ -5,7 +5,7 @@
   <vendor>ACME</vendor>
   <!-- Must have - software pack name: -->
   <name>ACMECM4_DFP</name>
-  <!-- Strongly recommended - pack descriptopn with Overview.md file: -->
+  <!-- Strongly recommended - pack description with Overview.md file: -->
   <description overview="Docs/Overview.md">ACMECM4 Arm Cortex-M4 Device Family Pack</description>
   <!-- Optional - pack download URL (if publicly available): -->
   <url>https://www.acme-website.com/pack/</url>
@@ -21,7 +21,7 @@
     </licenseSet>
   </licenseSets>
   
-  <!-- Must have - pack release information vor versioning: -->
+  <!-- Must have - pack release information for versioning: -->
   <releases>
     <release version="1.1.1" date="2025-02-10">
       Slight improvements.
@@ -50,7 +50,7 @@
     <family Dfamily="ACMECM4 Series" Dvendor="Generic:5">
       <!-- Must have - processor core and peripherals information: -->
       <processor Dcore="Cortex-M4" DcoreVersion="r0p1" Dfpu="NO_FPU" Dmpu="MPU" Dendian="Little-endian"/>
-      <!-- Strongly recommended - device family descrption: -->
+      <!-- Strongly recommended - device family description: -->
       <description>
         The ACMECM4 device family contains an Arm Cortex-M4 processor, running up to 100 MHz with a versatile set of on-chip peripherals.
       </description>
