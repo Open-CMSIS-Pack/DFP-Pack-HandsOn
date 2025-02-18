@@ -25,7 +25,7 @@ jobs:
         if: github.event_name == 'release'
         run: |
           git fetch --tags --force
-      # If you encounter problems with the following action, please check the docmentation at:
+      # If you encounter problems with the following action, please check the documentation at:
       #  https://github.com/Open-CMSIS-Pack/gen-pack-action
       - uses: Open-CMSIS-Pack/gen-pack-action@main
         with:
