@@ -45,6 +45,13 @@
     <keyword>ACMECM4</keyword>
   </keywords>
 
+  <!-- Strongly recommended - requirement to DFP (or other packs): -->
+  <requirements>
+    <packages>
+      <package vendor="ARM"  name="CMSIS"              version="6.0.0-0"/>
+    </packages>
+  </requirements>
+
   <!-- Must have - devices section: -->
   <devices>
     <family Dfamily="ACMECM4 Series" Dvendor="Generic:5">
