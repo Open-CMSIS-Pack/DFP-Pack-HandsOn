@@ -6,7 +6,8 @@ A [Board Support Pack (BSP)](https://github.com/Open-CMSIS-Pack/BSP-Pack-HandsOn
 
 **Content**
 - [Create a Device Family Pack - Hands-On Example](#create-a-device-family-pack---hands-on-example)
-  - [Benefits of Packs to deliver device and board support](#benefits-of-packs-to-deliver-device-and-board-support)
+  - [Benefits of Packs for Delivering Device and Board Support](#benefits-of-packs-for-delivering-device-and-board-support)
+    - [DFP and BSP Hands-On Session](#dfp-and-bsp-hands-on-session)
   - [DFP Content](#dfp-content)
   - [Updating to CMSIS v6](#updating-to-cmsis-v6)
   - [Example DFP](#example-dfp)
@@ -19,16 +20,14 @@ A [Board Support Pack (BSP)](https://github.com/Open-CMSIS-Pack/BSP-Pack-HandsOn
   - [Publish Pack](#publish-pack)
   - [Issues and Questions](#issues-and-questions)
 
-## Benefits of Packs to deliver device and board support
+## Benefits of Packs for Delivering Device and Board Support
 
-- **One way to distribute** device support into all relevant toolchains as CMSIS and the CMSIS-Toolbox supports Arm Compiler, GCC, IAR, and LLVM.
+- **A simple way to distribute** device support into all relevant toolchains as CMSIS and the CMSIS-Toolbox supports Arm Compiler, GCC, IAR, and LLVM.
 
 - **Connect to users:** as a device vendor you control distribution to multiple tools and web portals. For [Arm's pack index](https://www.keil.arm.com/packs/) new releases are scanned once per day, making the pack and the [devices](https://www.keil.arm.com/devices) defined inside it publicly available. Every device, device group, family or subfamily has a page automatically generated on keil.arm.com that displays all available information about the device(s). Device pages display compatible development boards (based on the mounted device specified for a board) and link back to the parent Pack.
   - Once a pack is published, various delivery services may pick up the device. The pack service on [www.keil.arm.com](https://www.keil.arm.com/packs/) scans your pack repository once per day.
   - Features that you specify in the packs are enable web search that helps users to identify devices and boards based on project requirements.
   - Adding documentation and purchase links lets you connect with your customers.
-
-  ![Example of a device page generated from PDSC data](Images/example-device-page-keil-arm-com.png)
 
 - **Reduces support efforts** as packs make it easier for users to integrate software in projects
   - The Product Lifecycle Management capabilities of the pack-enabled tools make it easy to update software packs when required.
@@ -36,7 +35,13 @@ A [Board Support Pack (BSP)](https://github.com/Open-CMSIS-Pack/BSP-Pack-HandsOn
 - **Access to examples** that may be part of packs quick-start user projects.
   - Adding one board layer can support many different standardized examples that are based on the Reference Example Framework.
 
-To learn more review the session about [Generating CMSIS-Packs for Devices and Boards](https://linaro.atlassian.net/wiki/spaces/CMSIS/pages/28905996344/Open-CMSIS-Pack+Technical+Meeting+2023-05-02).
+### DFP and BSP Hands-On Session
+
+A webinar explains how to use this repository:
+
+[![Webinar recording](./Images/HandsOnWebinar2025.png)](https://linaro.atlassian.net/wiki/spaces/CMSIS/pages/29847093264/Open-CMSIS-Pack+Technical+Meeting+2025-02-18#Meeting-Recording)
+
+The webinar slides can be found [here](https://linaro.atlassian.net/wiki/spaces/CMSIS/pages/29847093264/Open-CMSIS-Pack+Technical+Meeting+2025-02-18#Slides).
 
 ## DFP Content
 
